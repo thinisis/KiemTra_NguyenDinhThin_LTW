@@ -1,0 +1,25 @@
+﻿@model HOTENSV.Models.SinhVien
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Đăng nhập</h2>
+
+<p>
+    <b>Mã số sinh viên</b>
+</p>
+@using (Html.BeginForm())
+{
+    <table class="table">
+
+        @Html.EditorFor(model => model.MaSV, new { htmlAttributes = new { @class = "form-control" } })
+        <br />
+        <input type="submit" value="Đăng nhập" class="btn btn-default" />
+        <b>@ViewBag.ThongBao</b> 
+    </table>
+}
+    @Html.ActionLink("Back", "Index", "SinhVien")
+
+
