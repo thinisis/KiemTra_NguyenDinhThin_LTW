@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HOTENSV.Models.DangKy>
+﻿@model IEnumerable<HOTENSV.Models.HocPhan>
 
 @{
     ViewBag.Title = "Index";
@@ -13,7 +13,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.MaSV)
+            @Html.DisplayNameFor(model => model.MaHP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenHP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoTinChi)
         </th>
         <th></th>
     </tr>
@@ -21,12 +27,18 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.MaSV)
+            @Html.DisplayFor(modelItem => item.MaHP)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaDK }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaDK }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaDK })
+            @Html.DisplayFor(modelItem => item.TenHP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoTinChi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.MaHP }) |
+            @Html.ActionLink("Details", "Details", new { id = item.MaHP }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.MaHP })
         </td>
     </tr>
 }

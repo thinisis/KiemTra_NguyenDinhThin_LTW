@@ -17,10 +17,10 @@ namespace HOTENSV.Models
 
         [Key]
         [StringLength(4)]
-        public string MaNganh { get; set; }
+        [Display(Name = "Mã ngành")] public string MaNganh { get; set; }
 
         [StringLength(30)]
-        public string TenNganh { get; set; }
+        [Display(Name = "Tên ngành")] public string TenNganh { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SinhVien> SinhViens { get; set; }

@@ -24,26 +24,49 @@ namespace HOTENSV.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection, HttpPostedFileBase file)
+        public ActionResult Create(FormCollection collection,HttpPostedFileBase uploadHinh)
         {
             SinhVien sv = new SinhVien();
             sv.MaSV = collection["MaSV"];
             sv.HoTen = collection["HoTen"];
             sv.NgaySinh = DateTime.Parse(collection["NgaySinh"]);
             sv.GioiTinh = collection["GioiTinh"];
+            sv.MaNganh = collection["MaNganh"];
+            context.SinhViens.Add(sv);
+            context.SaveChanges();
+            if (uploadHinh != null && uploadHinh.ContentLength > 0)
+            {
+                string id = context.SinhViens.ToList().Last().MaSV.ToString();
+
+                string _FileName = "";
+                int index = uploadHinh.FileName.IndexOf('.');
+                _FileName = "sv" + id.ToString();
+                string _path = Path.Combine(Server.MapPath("~/Content/images"), _FileName);
+                uploadHinh.SaveAs(_path);
+
+                SinhVien svx = context.SinhViens.FirstOrDefault(x => x.MaSV == id);
+                svx.Hinh = _FileName;
+                context.SaveChanges();
+            }
+            
+            return RedirectToAction("Index","SinhVien");
+        }
+
+        public string ProcessUpload(HttpPostedFileBase fileUpload)
+        {
+            if (fileUpload == null)
+            {
+                return "";
+            }
             string path = Server.MapPath("~/Content/images");
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
-            string fileName = Path.GetFileName(file.FileName);
+            string fileName = Path.GetFileName(fileUpload.FileName);
             string fullPath = Path.Combine(path, fileName);
-            file.SaveAs(fullPath);
-            sv.Hinh = "/Content/images" + fullPath;
-            sv.MaNganh = collection["MaNganh"];
-            context.SinhViens.Add(sv);
-            context.SaveChanges();
-            return RedirectToAction("Index","SinhVien");
+            fileUpload.SaveAs(fullPath);
+            return fullPath;
         }
 
         public ActionResult Details(string id)

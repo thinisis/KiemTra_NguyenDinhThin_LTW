@@ -16,17 +16,19 @@ namespace HOTENSV.Models
         }
 
         [Key]
-        public int MaDK { get; set; }
+        [Display(Name = "Mã ??ng ký")] public int MaDK { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? NgayDK { get; set; }
+        [Display(Name = "Ngày ??ng ký")] public DateTime? NgayDK { get; set; }
 
         [StringLength(10)]
-        public string MaSV { get; set; }
+        [Display(Name = "Mã sinh viên")] public string MaSV { get; set; }
 
         public virtual SinhVien SinhVien { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HocPhan> HocPhans { get; set; }
+
+
     }
 }

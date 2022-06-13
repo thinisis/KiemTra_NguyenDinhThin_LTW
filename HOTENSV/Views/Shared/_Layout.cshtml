@@ -22,7 +22,7 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Sinh viên", "Index", "SinhVien")</li>
                     <li>@Html.ActionLink("Học phần", "Index", "HocPhan")</li>
-                    <li>@Html.ActionLink("Đăng ký", "Index", "DangKy")</li>
+                    <li>@Html.Partial("~/Views/DangKy/View.cshtml")</li>
                     <li>@Html.ActionLink("Đăng nhập", "Index", "DangNhap")</li>
                 </ul>
             </div>
@@ -35,7 +35,7 @@
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
+    @RenderSection("upload", required: false)
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

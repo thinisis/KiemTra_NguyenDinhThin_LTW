@@ -17,15 +17,17 @@ namespace HOTENSV.Models
 
         [Key]
         [StringLength(6)]
-        public string MaHP { get; set; }
+        [Display(Name = "Mã h?c ph?n")] public string MaHP { get; set; }
 
         [Required]
         [StringLength(30)]
-        public string TenHP { get; set; }
+        [Display(Name = "Tên h?c ph?n")] public string TenHP { get; set; }
 
-        public int? SoTinChi { get; set; }
+        [Display(Name = "??a ch?")] public int? SoTinChi { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DangKy> DangKies { get; set; }
+
+        
     }
 }

@@ -17,23 +17,23 @@ namespace HOTENSV.Models
 
         [Key]
         [StringLength(10)]
-        public string MaSV { get; set; }
+        [Display(Name = "Mã sinh viên")] public string MaSV { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string HoTen { get; set; }
+        [Display(Name = "H? tên")] public string HoTen { get; set; }
 
         [StringLength(5)]
-        public string GioiTinh { get; set; }
+        [Display(Name = "Gi?i tính")] public string GioiTinh { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime? NgaySinh { get; set; }
+        [Display(Name = "Ngày sinh")] public DateTime? NgaySinh { get; set; }
 
         [StringLength(50)]
-        public string Hinh { get; set; }
+        [Display(Name = "Hình")] public string Hinh { get; set; }
 
         [StringLength(4)]
-        public string MaNganh { get; set; }
+        [Display(Name = "Mã ngành")] public string MaNganh { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DangKy> DangKies { get; set; }
